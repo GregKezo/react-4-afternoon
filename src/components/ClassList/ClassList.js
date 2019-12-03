@@ -10,6 +10,12 @@ export default class ClassList extends Component {
     }
   }
 
+  handleBack = (e) => {
+    this.props.history.goBack()
+  }
+
+
+
   componentDidMount() {
     axios.get(`http://localhost:3005/students?class=${this.props.match.params.class}`)
       .then( res => {
@@ -31,6 +37,7 @@ export default class ClassList extends Component {
         <h1>{this.props.match.params.class}</h1>
         <h2>ClassList:</h2>
         { students }
+        <button onClick={this.handleBack}>Back</button>
       </div>
     )
   }
